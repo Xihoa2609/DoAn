@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="IdAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Pass" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="IdBill" />
+          </Key>
+          <Property Name="IdBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdKH" Type="int" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Sdt" Type="int" Nullable="false" />
+          <Property Name="IdCTBill" Type="int" />
+          <Property Name="TongTien" Type="money" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+          <Property Name="NgayBan" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CapNhatGia">
+          <Key>
+            <PropertyRef Name="IdCapNhat" />
+          </Key>
+          <Property Name="IdCapNhat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTU" Type="int" />
+          <Property Name="Gia" Type="money" />
+          <Property Name="NgayCapNhat" Type="date" />
+          <Property Name="NgayKetThuc" Type="date" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="IdCart" />
+          </Key>
+          <Property Name="IdCart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdKH" Type="int" Nullable="false" />
+          <Property Name="IsUse" Type="bit" />
+          <Property Name="TongTien" Type="money" />
+        </EntityType>
+        <EntityType Name="CongThuc">
+          <Key>
+            <PropertyRef Name="IdNLTU" />
+          </Key>
+          <Property Name="IdNLTU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTU" Type="int" Nullable="false" />
+          <Property Name="IdNL" Type="int" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="DonVi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdSize" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="IdKH" />
+          </Key>
+          <Property Name="IdKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="500" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="Sdt" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id_Role" Type="int" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Pass" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChiTietBill">
+          <Key>
+            <PropertyRef Name="IdCTBill" />
+          </Key>
+          <Property Name="IdCTBill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTU" Type="int" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChiTietCart">
+          <Key>
+            <PropertyRef Name="IdCTCart" />
+          </Key>
+          <Property Name="IdCTCart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCart" Type="int" Nullable="false" />
+          <Property Name="IdTU" Type="int" Nullable="false" />
+          <Property Name="Size" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="TongTien" Type="money" />
+        </EntityType>
+        <EntityType Name="ChiTietPhieuNhap">
+          <Key>
+            <PropertyRef Name="IdCTPN" />
+          </Key>
+          <Property Name="IdCTPN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPN" Type="int" />
+          <Property Name="IdNL" Type="int" />
+          <Property Name="IdNhaCC" Type="int" />
+          <Property Name="HanSuDung" Type="date" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="GiaNhap" Type="money" />
+          <Property Name="ThanhTien" Type="float" />
+        </EntityType>
+        <EntityType Name="LoaiThucUong">
+          <Key>
+            <PropertyRef Name="IdLoai" />
+          </Key>
+          <Property Name="IdLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoai" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="NguyenLieu">
+          <Key>
+            <PropertyRef Name="IdNL" />
+          </Key>
+          <Property Name="IdNL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNL" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdNhaCC" Type="int" />
+          <Property Name="DVT" Type="nvarchar" MaxLength="500" />
+          <Property Name="TonKho" Type="int" />
+          <Property Name="HanSuDung" Type="date" />
+        </EntityType>
+        <EntityType Name="NhaCungCap">
+          <Key>
+            <PropertyRef Name="IdNhaCC" />
+          </Key>
+          <Property Name="IdNhaCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNhaCC" Type="nvarchar" MaxLength="500" />
+          <Property Name="Sdt" Type="varchar" MaxLength="250" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PhieuNhap">
+          <Key>
+            <PropertyRef Name="IdPN" />
+          </Key>
+          <Property Name="IdPN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenPhieu" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayNhap" Type="date" />
+          <Property Name="TongTien" Type="money" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id_Role" />
+          </Key>
+          <Property Name="Id_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="IdRoleUser" />
+          </Key>
+          <Property Name="IdRoleUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="Id_Role" Type="int" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="IdSize" />
+          </Key>
+          <Property Name="IdSize" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Size" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="IdStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNV" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Sdt" Type="varchar" MaxLength="500" />
+          <Property Name="NgaySinh" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ThucUong">
+          <Key>
+            <PropertyRef Name="IdTU" />
+          </Key>
+          <Property Name="IdTU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenTU" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdLoai" Type="int" />
+          <Property Name="Gia" Type="money" />
+          <Property Name="Date_update" Type="datetime" />
+          <Property Name="Image" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="QLTTModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CapNhatGia" EntityType="Self.CapNhatGia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CongThuc" EntityType="Self.CongThuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietBill" EntityType="Self.ChiTietBill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietCart" EntityType="Self.ChiTietCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietPhieuNhap" EntityType="Self.ChiTietPhieuNhap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiThucUong" EntityType="Self.LoaiThucUong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguyenLieu" EntityType="Self.NguyenLieu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleUser" EntityType="Self.RoleUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThucUong" EntityType="Self.ThucUong" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="IdAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="IdBill" />
+          </Key>
+          <Property Name="IdBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdKH" Type="Int32" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sdt" Type="Int32" Nullable="false" />
+          <Property Name="IdCTBill" Type="Int32" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBan" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CapNhatGia">
+          <Key>
+            <PropertyRef Name="IdCapNhat" />
+          </Key>
+          <Property Name="IdCapNhat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTU" Type="Int32" />
+          <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="IdCart" />
+          </Key>
+          <Property Name="IdCart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdKH" Type="Int32" Nullable="false" />
+          <Property Name="IsUse" Type="Boolean" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="CongThuc">
+          <Key>
+            <PropertyRef Name="IdNLTU" />
+          </Key>
+          <Property Name="IdNLTU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTU" Type="Int32" Nullable="false" />
+          <Property Name="IdNL" Type="Int32" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="DonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdSize" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="IdKH" />
+          </Key>
+          <Property Name="IdKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKH" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_Role" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChiTietBill">
+          <Key>
+            <PropertyRef Name="IdCTBill" />
+          </Key>
+          <Property Name="IdCTBill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTU" Type="Int32" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChiTietCart">
+          <Key>
+            <PropertyRef Name="IdCTCart" />
+          </Key>
+          <Property Name="IdCTCart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCart" Type="Int32" Nullable="false" />
+          <Property Name="IdTU" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SoLuong" Type="Int32" Nullable="false" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="ChiTietPhieuNhap">
+          <Key>
+            <PropertyRef Name="IdCTPN" />
+          </Key>
+          <Property Name="IdCTPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPN" Type="Int32" />
+          <Property Name="IdNL" Type="Int32" />
+          <Property Name="IdNhaCC" Type="Int32" />
+          <Property Name="HanSuDung" Type="DateTime" Precision="0" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="GiaNhap" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ThanhTien" Type="Double" />
+        </EntityType>
+        <EntityType Name="LoaiThucUong">
+          <Key>
+            <PropertyRef Name="IdLoai" />
+          </Key>
+          <Property Name="IdLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoai" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NguyenLieu">
+          <Key>
+            <PropertyRef Name="IdNL" />
+          </Key>
+          <Property Name="IdNL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IdNhaCC" Type="Int32" />
+          <Property Name="DVT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TonKho" Type="Int32" />
+          <Property Name="HanSuDung" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="NhaCungCap">
+          <Key>
+            <PropertyRef Name="IdNhaCC" />
+          </Key>
+          <Property Name="IdNhaCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNhaCC" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PhieuNhap">
+          <Key>
+            <PropertyRef Name="IdPN" />
+          </Key>
+          <Property Name="IdPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenPhieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="0" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id_Role" />
+          </Key>
+          <Property Name="Id_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoleUser">
+          <Key>
+            <PropertyRef Name="IdRoleUser" />
+          </Key>
+          <Property Name="IdRoleUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Role" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="IdSize" />
+          </Key>
+          <Property Name="IdSize" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Size1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="IdStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNV" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sdt" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ThucUong">
+          <Key>
+            <PropertyRef Name="IdTU" />
+          </Key>
+          <Property Name="IdTU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IdLoai" Type="Int32" />
+          <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Date_update" Type="DateTime" Precision="3" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="QLTTEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" />
+          <EntitySet Name="CapNhatGia" EntityType="Self.CapNhatGia" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" />
+          <EntitySet Name="CongThuc" EntityType="Self.CongThuc" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="ChiTietBill" EntityType="Self.ChiTietBill" />
+          <EntitySet Name="ChiTietCart" EntityType="Self.ChiTietCart" />
+          <EntitySet Name="ChiTietPhieuNhap" EntityType="Self.ChiTietPhieuNhap" />
+          <EntitySet Name="LoaiThucUong" EntityType="Self.LoaiThucUong" />
+          <EntitySet Name="NguyenLieu" EntityType="Self.NguyenLieu" />
+          <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" />
+          <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="RoleUser" EntityType="Self.RoleUser" />
+          <EntitySet Name="Size" EntityType="Self.Size" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="ThucUong" EntityType="Self.ThucUong" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTTModelStoreContainer" CdmEntityContainer="QLTTEntities1">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="QLTTModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bill">
+            <EntityTypeMapping TypeName="QLTTModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="IdBill" ColumnName="IdBill" />
+                <ScalarProperty Name="IdKH" ColumnName="IdKH" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="IdCTBill" ColumnName="IdCTBill" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NgayBan" ColumnName="NgayBan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CapNhatGia">
+            <EntityTypeMapping TypeName="QLTTModel.CapNhatGia">
+              <MappingFragment StoreEntitySet="CapNhatGia">
+                <ScalarProperty Name="IdCapNhat" ColumnName="IdCapNhat" />
+                <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="QLTTModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="IdCart" ColumnName="IdCart" />
+                <ScalarProperty Name="IdKH" ColumnName="IdKH" />
+                <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CongThuc">
+            <EntityTypeMapping TypeName="QLTTModel.CongThuc">
+              <MappingFragment StoreEntitySet="CongThuc">
+                <ScalarProperty Name="IdNLTU" ColumnName="IdNLTU" />
+                <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+                <ScalarProperty Name="IdNL" ColumnName="IdNL" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="DonVi" ColumnName="DonVi" />
+                <ScalarProperty Name="IdSize" ColumnName="IdSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="QLTTModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="IdKH" ColumnName="IdKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietBill">
+            <EntityTypeMapping TypeName="QLTTModel.ChiTietBill">
+              <MappingFragment StoreEntitySet="ChiTietBill">
+                <ScalarProperty Name="IdCTBill" ColumnName="IdCTBill" />
+                <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietCart">
+            <EntityTypeMapping TypeName="QLTTModel.ChiTietCart">
+              <MappingFragment StoreEntitySet="ChiTietCart">
+                <ScalarProperty Name="IdCTCart" ColumnName="IdCTCart" />
+                <ScalarProperty Name="IdCart" ColumnName="IdCart" />
+                <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietPhieuNhap">
+            <EntityTypeMapping TypeName="QLTTModel.ChiTietPhieuNhap">
+              <MappingFragment StoreEntitySet="ChiTietPhieuNhap">
+                <ScalarProperty Name="IdCTPN" ColumnName="IdCTPN" />
+                <ScalarProperty Name="IdPN" ColumnName="IdPN" />
+                <ScalarProperty Name="IdNL" ColumnName="IdNL" />
+                <ScalarProperty Name="IdNhaCC" ColumnName="IdNhaCC" />
+                <ScalarProperty Name="HanSuDung" ColumnName="HanSuDung" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiThucUong">
+            <EntityTypeMapping TypeName="QLTTModel.LoaiThucUong">
+              <MappingFragment StoreEntitySet="LoaiThucUong">
+                <ScalarProperty Name="IdLoai" ColumnName="IdLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NguyenLieu">
+            <EntityTypeMapping TypeName="QLTTModel.NguyenLieu">
+              <MappingFragment StoreEntitySet="NguyenLieu">
+                <ScalarProperty Name="IdNL" ColumnName="IdNL" />
+                <ScalarProperty Name="TenNL" ColumnName="TenNL" />
+                <ScalarProperty Name="IdNhaCC" ColumnName="IdNhaCC" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="TonKho" ColumnName="TonKho" />
+                <ScalarProperty Name="HanSuDung" ColumnName="HanSuDung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaCungCap">
+            <EntityTypeMapping TypeName="QLTTModel.NhaCungCap">
+              <MappingFragment StoreEntitySet="NhaCungCap">
+                <ScalarProperty Name="IdNhaCC" ColumnName="IdNhaCC" />
+                <ScalarProperty Name="TenNhaCC" ColumnName="TenNhaCC" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuNhap">
+            <EntityTypeMapping TypeName="QLTTModel.PhieuNhap">
+              <MappingFragment StoreEntitySet="PhieuNhap">
+                <ScalarProperty Name="IdPN" ColumnName="IdPN" />
+                <ScalarProperty Name="TenPhieu" ColumnName="TenPhieu" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="QLTTModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleUser">
+            <EntityTypeMapping TypeName="QLTTModel.RoleUser">
+              <MappingFragment StoreEntitySet="RoleUser">
+                <ScalarProperty Name="IdRoleUser" ColumnName="IdRoleUser" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Size">
+            <EntityTypeMapping TypeName="QLTTModel.Size">
+              <MappingFragment StoreEntitySet="Size">
+                <ScalarProperty Name="IdSize" ColumnName="IdSize" />
+                <ScalarProperty Name="Size1" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="QLTTModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLTTModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThucUong">
+            <EntityTypeMapping TypeName="QLTTModel.ThucUong">
+              <MappingFragment StoreEntitySet="ThucUong">
+                <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+                <ScalarProperty Name="TenTU" ColumnName="TenTU" />
+                <ScalarProperty Name="IdLoai" ColumnName="IdLoai" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Date_update" ColumnName="Date_update" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

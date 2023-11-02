@@ -1,0 +1,132 @@
+﻿@model QuanLyTiemTra.Models.Customer
+@{
+    ViewBag.Title = "DangKy";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title> Tạo Tài Khoản </title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/Homepage.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand">
+                <div class="signup-link">
+                    <a href="/Account/DangNhap">Quay về</a>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+
+                    <li class="nav-item"> <a class="nav-link" href="/Account/Index">Quay lại</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign Free-->
+    <section class="page-section bg-light" id="team">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Tạo Tài Khoản</h2>
+                
+            </div>
+            <div class="field d-flex justify-content-center" id="registrationForm">
+                <form method="post" action="@Url.Action("DangKy", "Customer")">
+                    @Html.AntiForgeryToken() <!-- Đảm bảo sử dụng AntiForgeryToken để bảo vệ khỏi tấn công CSRF -->
+                    <div class="field">
+                        <label for="name" class="form-label">Họ và Tên</label>
+                        @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="disabledSelect" class="form-label">Giới Tính</label>
+                        <br>
+                        <input type="checkbox" id="male" name="GioiTinh" value="GioiTinhNam">
+                        <label for="male">Nam</label><br>
+
+                        <input type="checkbox" id="female" name="GioiTinh" value="GioiTinhNu">
+                        <label for="female">Nữ</label><br>
+                    </div>
+                    <div class="field">
+                        <label for="name" class="form-label">Số điện thoại</label>
+                        @Html.TextBoxFor(model => model.Sdt, new { @class = "form-control" })
+                    </div>
+                    <div class="field">
+                        <label for="name" class="form-label">Địa chỉ</label>
+                        @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
+                    </div>
+                    <div class="field">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        <div id="emailHelp" class="form-text">Lưu ý: hệ thống sẽ gửi thông báo khi đã đăng ký thành công về email của bạn !!!</div>
+                    </div>
+                    <div class="field">
+                        <label for="password" class="form-label">Mật khẩu</label>
+                        @Html.PasswordFor(model => model.Pass, new { @class = "form-control" })
+                    </div>
+                    <br />
+                    <div class="field text-center">
+                        <button type="submit" class="btn btn-primary" style="color: blue; background-color: pink;" value="Thêm">Đăng Ký Ngay</button>
+                    </div>
+                    @if (!string.IsNullOrEmpty(TempData["SuccessMessage"] as string))
+                    {
+                        <div id="successMessage" class="alert alert-success text-center">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--Message dis-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Kiểm tra xem có thông báo thành công và ẩn nó sau 5 giây
+            var successMessage = $("#successMessage");
+            if (successMessage.length) {
+                setTimeout(function () {
+                    successMessage.fadeOut(500);
+                }, 3000); // 3 giây (3000 ms)
+            }
+        });
+    </script>
+
+
+
+    <!-- link use ajax -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/JavaScript.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+</html>

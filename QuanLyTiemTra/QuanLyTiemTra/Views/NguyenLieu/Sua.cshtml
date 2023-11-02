@@ -1,0 +1,60 @@
+﻿@model QuanLyTiemTra.ViewModel.MutipleData
+@{
+    ViewBag.Title = "Sua";
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sửa nguyên liệu</title>
+
+    <link href="~/css/NguyenLieu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Sửa đổi nguyên liệu
+        </div>
+        <form method="post" action="Sua">
+            @foreach (var item in Model.nguyenLieus)
+            {
+                <div class="field">
+                    <input type="text" name="IdNL" value="@item.IdNL" readonly>
+
+                </div>
+                <label>Tên nhà cung cấp</label>
+                <select id="disease-list" name="IdNhaCC">
+                    @foreach (var item2 in Model.nhaCungCap)
+                    {
+                        <option value="@item2.IdNhaCC" @(item2.IdNhaCC == item.IdNhaCC ? "selected" : "")>@item2.TenNhaCC</option>
+                    }
+                </select>
+                <div class="field">
+                    <input type="text" name="TenNL" value="@item.TenNL">
+                    <label>Tên nguyên liệu</label>
+                </div>
+                <div class="field">
+                    <input type="text" name="DVT" value="@item.DVT">
+                    <label>Đơn vị tính</label>
+                </div>
+                <div class="field">
+                    <input type="number" name="TonKho" value="@item.TonKho">
+                    <label>Tồn kho</label>
+                </div>
+                <div class="field">
+                    <input type="datetime" name="HanSuDung" value="@item.HanSuDung">
+                    <label>Hạn sử dụng</label>
+                </div>
+
+
+                <div class="field">
+                    <input type="submit" value="Sửa">
+                </div>
+                <div class="signup-link">
+                    <a href="/NguyenLieu/NguyenLieu">Quay về trang chủ</a>
+                </div>
+            }
+        </form>
+    </div>
+</body>
+</html>

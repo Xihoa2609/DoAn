@@ -1,0 +1,103 @@
+﻿/* CSS hiện tại */
+
+body {
+    font-family: 'Lora', serif; /* Sử dụng font chữ từ Google Fonts */
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; /* Đặt phần tử header content sang hai bên */
+    align-items: center;
+}
+
+    header h1 {
+        margin: 0;
+    }
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-frame {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-details {
+    flex: 1;
+    text-align: center;
+}
+
+.user-name {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.user-email,
+.user-phone,
+.user-address,
+.user-gender {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.menu {
+    position: fixed;
+    right: -200px; /* Đặt menu bên phải */
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    transition: right 0.3s;
+}
+
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu li {
+        margin: 10px 20px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+    }
+
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+.close-menu {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 20px;
+    display: none;
+}

@@ -1,0 +1,73 @@
+﻿@model QuanLyTiemTra.Models.Customer
+@{
+    ViewBag.Title = "ThongTin";
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="~/js/script.js"></script>
+    <link href="~/css/style2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<div class="container">
+    <div class="menu">
+        <div class="logo">
+            Tiệm Trà<br /><span>Tháng Chín</span>
+        </div>
+        <ul>
+            <li>
+                <a href="/TrangChu/Index" style="text-decoration: none; color: black;">
+                    <i class="fa-solid fa-house-user"></i> Home
+                </a>
+            </li>
+            <li class="active"> <a><i class="fa-regular fa-user"></i> Profile</a></li>
+            @*<li><i class="fa-solid fa-truck-fast"> </i> Đơn hàng</li>*@
+            <li>
+                <a href="/Customer/ThongTin" style="text-decoration: none; color: black;">
+                    <i class="fa-solid fa-truck-fast"></i> Đơn hàng
+                </a>
+            </li>
+
+        </ul>
+        <ul>
+            @*<li><i class="fa-brands fa-tiktok"></i> Tiktok</li>*@
+            <li><i class="fa-brands fa-facebook"></i> Facebook</li>
+            @*<li><i class="fa-brands fa-instagram"></i> Instagram</li>*@
+        </ul>
+    </div>
+    <div class="center">
+        <div class="search">
+            <div class="form">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </div>
+        </div>
+        <div style="text-align:center"><h2>THÔNG TIN CÁ NHÂN</h2></div>
+        <div>
+            <ul>
+                <li>
+                    <label>Họ và Tên : </label>
+                </li>
+                <li>
+                    <label>Giới Tính : </label>
+                </li>
+                <li>
+                    <label>Số điện thoại : </label>
+                </li>
+                <li>
+                    <label>Địa chỉ : </label>
+                </li>
+
+                <li>
+                    <label>Email : </label>
+                </li>
+            </ul>
+        </div>
+</html>
+

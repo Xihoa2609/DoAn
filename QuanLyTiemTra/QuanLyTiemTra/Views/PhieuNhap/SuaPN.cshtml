@@ -1,0 +1,58 @@
+﻿@model QuanLyTiemTra.Models.PhieuNhap
+@{
+    ViewBag.Title = "SuaPN";
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sửa nhân viên</title>
+
+    <link href="~/css/NguyenLieu.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Sửa Phiếu
+        </div>
+        <form method="post" action="SuaPN">
+
+            <div class="field">
+                <input type="text" name="IdPN" value="@Model.IdPN" readonly>
+
+            </div>
+            <div class="field">
+                <input type="text" name="TenPhieu" value="@Model.TenPhieu">
+                <label>Tên Phiếu</label>
+            </div>
+
+            <div class="field">
+                @if (Model.NgayNhap.HasValue)
+                {
+                    <input type="date" name="NgayNhap" value="@Model.NgayNhap.Value.ToString("yyyy-MM-dd")" />
+                }
+                else
+                {
+                    <input type="date" name="NgayNhap" />
+                }
+                <label>Ngày Nhập</label>
+            </div>
+
+
+            <div class="field">
+                <input type="text" name="TinhTrang" value="@Model.TinhTrang">
+                <br />
+                <label>Tình trạng</label>
+            </div>
+
+            <div class="field">
+                <input type="submit" value="Sửa">
+            </div>
+            <div class="signup-link">
+                <a href="/NhanVien/NhanVien">Quay về</a>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLTTModelStoreContainer" CdmEntityContainer="QLTTEntities1">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="QLTTModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bill">
+      <EntityTypeMapping TypeName="QLTTModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="IdBill" ColumnName="IdBill" />
+          <ScalarProperty Name="IdKH" ColumnName="IdKH" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="IdCTBill" ColumnName="IdCTBill" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="NgayBan" ColumnName="NgayBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CapNhatGia">
+      <EntityTypeMapping TypeName="QLTTModel.CapNhatGia">
+        <MappingFragment StoreEntitySet="CapNhatGia">
+          <ScalarProperty Name="IdCapNhat" ColumnName="IdCapNhat" />
+          <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cart">
+      <EntityTypeMapping TypeName="QLTTModel.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="IdCart" ColumnName="IdCart" />
+          <ScalarProperty Name="IdKH" ColumnName="IdKH" />
+          <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CongThuc">
+      <EntityTypeMapping TypeName="QLTTModel.CongThuc">
+        <MappingFragment StoreEntitySet="CongThuc">
+          <ScalarProperty Name="IdNLTU" ColumnName="IdNLTU" />
+          <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+          <ScalarProperty Name="IdNL" ColumnName="IdNL" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="DonVi" ColumnName="DonVi" />
+          <ScalarProperty Name="IdSize" ColumnName="IdSize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="QLTTModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="IdKH" ColumnName="IdKH" />
+          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietBill">
+      <EntityTypeMapping TypeName="QLTTModel.ChiTietBill">
+        <MappingFragment StoreEntitySet="ChiTietBill">
+          <ScalarProperty Name="IdCTBill" ColumnName="IdCTBill" />
+          <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietCart">
+      <EntityTypeMapping TypeName="QLTTModel.ChiTietCart">
+        <MappingFragment StoreEntitySet="ChiTietCart">
+          <ScalarProperty Name="IdCTCart" ColumnName="IdCTCart" />
+          <ScalarProperty Name="IdCart" ColumnName="IdCart" />
+          <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietPhieuNhap">
+      <EntityTypeMapping TypeName="QLTTModel.ChiTietPhieuNhap">
+        <MappingFragment StoreEntitySet="ChiTietPhieuNhap">
+          <ScalarProperty Name="IdCTPN" ColumnName="IdCTPN" />
+          <ScalarProperty Name="IdPN" ColumnName="IdPN" />
+          <ScalarProperty Name="IdNL" ColumnName="IdNL" />
+          <ScalarProperty Name="IdNhaCC" ColumnName="IdNhaCC" />
+          <ScalarProperty Name="HanSuDung" ColumnName="HanSuDung" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiThucUong">
+      <EntityTypeMapping TypeName="QLTTModel.LoaiThucUong">
+        <MappingFragment StoreEntitySet="LoaiThucUong">
+          <ScalarProperty Name="IdLoai" ColumnName="IdLoai" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NguyenLieu">
+      <EntityTypeMapping TypeName="QLTTModel.NguyenLieu">
+        <MappingFragment StoreEntitySet="NguyenLieu">
+          <ScalarProperty Name="IdNL" ColumnName="IdNL" />
+          <ScalarProperty Name="TenNL" ColumnName="TenNL" />
+          <ScalarProperty Name="IdNhaCC" ColumnName="IdNhaCC" />
+          <ScalarProperty Name="DVT" ColumnName="DVT" />
+          <ScalarProperty Name="TonKho" ColumnName="TonKho" />
+          <ScalarProperty Name="HanSuDung" ColumnName="HanSuDung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhaCungCap">
+      <EntityTypeMapping TypeName="QLTTModel.NhaCungCap">
+        <MappingFragment StoreEntitySet="NhaCungCap">
+          <ScalarProperty Name="IdNhaCC" ColumnName="IdNhaCC" />
+          <ScalarProperty Name="TenNhaCC" ColumnName="TenNhaCC" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuNhap">
+      <EntityTypeMapping TypeName="QLTTModel.PhieuNhap">
+        <MappingFragment StoreEntitySet="PhieuNhap">
+          <ScalarProperty Name="IdPN" ColumnName="IdPN" />
+          <ScalarProperty Name="TenPhieu" ColumnName="TenPhieu" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="QLTTModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+          <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleUser">
+      <EntityTypeMapping TypeName="QLTTModel.RoleUser">
+        <MappingFragment StoreEntitySet="RoleUser">
+          <ScalarProperty Name="IdRoleUser" ColumnName="IdRoleUser" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id_Role" ColumnName="Id_Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Size">
+      <EntityTypeMapping TypeName="QLTTModel.Size">
+        <MappingFragment StoreEntitySet="Size">
+          <ScalarProperty Name="IdSize" ColumnName="IdSize" />
+          <ScalarProperty Name="Size1" ColumnName="Size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff">
+      <EntityTypeMapping TypeName="QLTTModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+          <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QLTTModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThucUong">
+      <EntityTypeMapping TypeName="QLTTModel.ThucUong">
+        <MappingFragment StoreEntitySet="ThucUong">
+          <ScalarProperty Name="IdTU" ColumnName="IdTU" />
+          <ScalarProperty Name="TenTU" ColumnName="TenTU" />
+          <ScalarProperty Name="IdLoai" ColumnName="IdLoai" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="Date_update" ColumnName="Date_update" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
